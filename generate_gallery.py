@@ -23,18 +23,18 @@ def write_html_footer(target):
   target.write("</center></body></html>")
   target.write("\n")
 
-def write_img_to_html(filename_full_path, target):
-  target.write('<a href="/home/peteflo"><img src="' + filename_full_path +  '" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;" ></a>')
+def write_img_to_html(rel_path, target):
+  target.write('<a href="/home/peteflo"><img src="' + rel_path +  '" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;" ></a>')
   target.write("\n")
 
 def create_gallery(dir_full_path, target):
   for root, dirs, files in os.walk(dir_full_path):
       for filename in sorted(files):
           filename_full_path = os.path.join(root, filename)
-          print filename_full_path
+          rel_path = os.path.relpath(filename_full_path, dir_full_path)
           if filename_full_path.endswith(".png") or filename_full_path.endswith(".jpg"):
-              print "found .png match: " + filename_full_path
-              write_img_to_html(filename_full_path, target)
+              print "found image math: " + filename_full_path
+              write_img_to_html(rel_path, target)
 
 write_html_header(target)
 create_gallery(img_dir, target)
@@ -42,5 +42,8 @@ write_html_footer(target)
 
 target.close()
 
+print "wrote ", html_file
+
 # view gallery
+print "opening ..."
 os.system("firefox " + html_file)
