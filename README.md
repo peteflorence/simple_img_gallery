@@ -7,9 +7,13 @@ None, no dependencies other than Python and Firefox
 
 ## Instructions
 
-	python generate_gallery.py sample_images
+	python generate_gallery.py ./sample_images
 
-Alternatively, instead of `sample_images`, pass a full path to a directory of images of your choice.
+Alternatively, instead of `sample_images`, pass a full path to a directory of images of your choice:
+
+	python generate_gallery.py /path/to/image_directory
+
+The script will create an `index.html` in that directory, and view it with Firefox.
 
 Note:
 
