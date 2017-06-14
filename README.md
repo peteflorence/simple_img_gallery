@@ -13,11 +13,17 @@ Alternatively, instead of `sample_images`, pass a full path to a directory of im
 
 	python generate_gallery.py /path/to/image_directory
 
-Optionally, you can specify the number of images per row, with an argument after the directory path.  (The default is `3`.)  For example, to tile `6` per row:
+The script will create an `index.html` in that directory, and view it with Firefox.
+
+## Features
+
+- Tile `N` images per row: pass an argument after the directory path.  (The default is `3`.)  For example, to tile `6` per row:
 	
 	python generate_gallery.py /path/to/image_directory 6
 
-The script will create an `index.html` in that directory, and view it with Firefox.
+- Click on any image to zoom (thank you browser)
+
+- Right click on any image and "Save Image As" (if you want it for your plots)
 
 Note:
 
