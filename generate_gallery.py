@@ -11,8 +11,12 @@ else:
   print "python generate_gallery.py sample_images"
   quit()
 
+n_per_row = 3           			 # default to tiling 3 images per row
+if len(sys.argv) > 2:
+	n_per_row = int(sys.argv[2])
+width = str(100/n_per_row)
+
 html_file = os.path.join(img_dir, "index.html")
-print html_file
 target = open(html_file, 'w')
 
 def write_html_header(target):
@@ -24,7 +28,7 @@ def write_html_footer(target):
   target.write("\n")
 
 def write_img_to_html(rel_path, target):
-  target.write('<a href='+rel_path+'><img src="' + rel_path +  '" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;" ></a>')
+  target.write('<a href='+rel_path+'><img src="' + rel_path +  '" style="float: left; width: '+width+'%; margin-right: 0%; margin-bottom: 0.5em;" ></a>')
   target.write("\n")
 
 def create_gallery(dir_full_path, target):
@@ -33,17 +37,13 @@ def create_gallery(dir_full_path, target):
           filename_full_path = os.path.join(root, filename)
           rel_path = os.path.relpath(filename_full_path, dir_full_path)
           if filename_full_path.endswith(".png") or filename_full_path.endswith(".jpg"):
-              print "found image math: " + filename_full_path
               write_img_to_html(rel_path, target)
 
 write_html_header(target)
 create_gallery(img_dir, target)
 write_html_footer(target)
-
 target.close()
 
 print "wrote ", html_file
-
-# view gallery
 print "opening ..."
 os.system("firefox " + html_file)
