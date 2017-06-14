@@ -1,6 +1,10 @@
 # simple_img_gallery
 The simplest way to make a static image library, with only a little Python, minimal HTML, and nothing else
 
+<p align="center">
+  <img src="example.png" width="350"/>
+</p>
+
 ## Install
 
 None, no dependencies other than Python and Firefox
@@ -19,7 +23,12 @@ The script will create an `index.html` in that directory, and view it with Firef
 
 - Tile `N` images per row: pass an argument after the directory path.  (The default is `3`.)  For example, to tile `6` per row:
 	
+```
 	python generate_gallery.py /path/to/image_directory 6
+```
+<p align="center">
+  <img src="example-6.png" width="350"/>
+</p>
 
 - Click on any image to zoom (thank you browser)
 
