@@ -24,7 +24,7 @@ def write_html_footer(target):
   target.write("\n")
 
 def write_img_to_html(rel_path, target):
-  target.write('<a href="/home/peteflo"><img src="' + rel_path +  '" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;" ></a>')
+  target.write('<a href='+rel_path+'><img src="' + rel_path +  '" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em;" ></a>')
   target.write("\n")
 
 def create_gallery(dir_full_path, target):
