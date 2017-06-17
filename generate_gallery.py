@@ -49,7 +49,11 @@ def create_gallery_from_description(description_full_path):
     content = [x.strip() for x in content] 
     for i in content:
       i = i.split()
-      write_img_to_html(i[0], target)
+      first = i[0].split("resized",1)[0] 
+      middle = "images"
+      end = i[0].split("images",1)[1] 
+      base = (first+middle+end).split("rgb",1)[0]
+      write_img_to_html(base+"color_labels.png", target)
 
   write_html_footer(target)
   return "index.html"
