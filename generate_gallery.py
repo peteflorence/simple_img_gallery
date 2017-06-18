@@ -16,6 +16,10 @@ if len(sys.argv) > 2:
 	n_per_row = int(sys.argv[2])
 width = str(100/n_per_row)
 
+downsample = 1
+if len(sys.argv) > 3:
+  downsample = int(sys.argv[3])
+
 def write_html_header(target):
   target.write("<html><head><title>Image Gallery</title></head><body><center>")
   target.write("\n")
@@ -32,12 +36,16 @@ def create_gallery_from_dir(dir_full_path):
   html_file = os.path.join(dir_full_path, "index.html")
   target = open(html_file, 'w')
   write_html_header(target)
+  counter = 0
   for root, dirs, files in os.walk(dir_full_path):
       for filename in sorted(files):
           filename_full_path = os.path.join(root, filename)
           rel_path = os.path.relpath(filename_full_path, dir_full_path)
           if filename_full_path.endswith(".png") or filename_full_path.endswith(".jpg"):
-              write_img_to_html(rel_path, target)
+              counter += 1
+              if counter >= downsample:
+                counter = 0
+                write_img_to_html(rel_path, target)
   write_html_footer(target)
   return html_file
 
@@ -47,11 +55,11 @@ def create_gallery_from_description(description_full_path):
   with open(description_full_path) as f:
     content = f.readlines()
     content = [x.strip() for x in content] 
-    for i in content:
-      i = i.split()
-      first = i[0].split("resized",1)[0] 
+    for index, val in enumerate(content):
+      val = val.split()
+      first = val[0].split("resized",1)[0] 
       middle = "images"
-      end = i[0].split("images",1)[1] 
+      end = val[0].split("images",1)[1] 
       base = (first+middle+end).split("rgb",1)[0]
       write_img_to_html(base+"color_labels.png", target)
 
