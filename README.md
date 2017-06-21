@@ -2,7 +2,7 @@
 The simplest way to make a static image library, with only a little Python, minimal HTML, and nothing else
 
 <p align="center">
-  <img src="example.png" width="350"/>
+  <img src="./docs/example.png" width="350"/>
 </p>
 
 ## Quickstart
@@ -39,7 +39,7 @@ allows you to call `generate_gallery.py` from any directory.
 	generate_gallery.py /path/to/image_directory 6
 ```
 <p align="center">
-  <img src="example-6.png" width="350"/>
+  <img src="./docs/example-6.png" width="350"/>
 </p>
 
 - Click on any image to zoom (thank you browser)
