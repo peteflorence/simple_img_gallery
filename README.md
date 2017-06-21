@@ -15,7 +15,13 @@ Alternatively, instead of `sample_images`, pass a full path to a directory of im
 
 The script will create an `index.html` in that directory, and view it with Firefox.
 
+## Dependencies
+
+There are no dependencies other than Python.  (Currently only Python 2 supported.)
+
 ## Installation
+
+If you'd like to be able to use from any directory on your machine, you can:
 ```
 cd simple_img_gallery
 python ./setup.py install --prefix=${INSTALL_PATH}
@@ -24,7 +30,6 @@ where `INSTALL_PATH` must be on your `PYTHONPATH`.
 
 The installation step (to a directory that lies on your `PYTHONPATH`)
 allows you to call `generate_gallery.py` from any directory.
-
 
 ## Features
 
@@ -46,5 +51,9 @@ Note:
 - Currently only supports tiling the images in alphabetical order.
 
 Future features:
+
+- Support Python3
+
+- Multi-browswer support (currently we only natively support Firefox) 
 
 - Support randomization, down-sampling
